@@ -8,23 +8,23 @@
     "net10.0": []
   },
   "packageFolders": {
-    "D:\\AI\\Cache\\NuGet\\Packages": {},
+    "C:\\Users\\DS2_ISABELLA\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\SP-Skills\\Documents\\2026-I2DS\\Aula-04\\03-Encapsulamento\\Encapsulamento\\Encapsulamento.csproj",
+      "projectUniqueName": "c:\\Users\\DS2_ISABELLA\\Documents\\IDS2\\2026-I2DS\\Aula-04\\03-Encapsulamento\\Encapsulamento\\Encapsulamento.csproj",
       "projectName": "Encapsulamento",
-      "projectPath": "C:\\Users\\SP-Skills\\Documents\\2026-I2DS\\Aula-04\\03-Encapsulamento\\Encapsulamento\\Encapsulamento.csproj",
-      "packagesPath": "D:\\AI\\Cache\\NuGet\\Packages",
-      "outputPath": "C:\\Users\\SP-Skills\\Documents\\2026-I2DS\\Aula-04\\03-Encapsulamento\\Encapsulamento\\obj\\",
+      "projectPath": "c:\\Users\\DS2_ISABELLA\\Documents\\IDS2\\2026-I2DS\\Aula-04\\03-Encapsulamento\\Encapsulamento\\Encapsulamento.csproj",
+      "packagesPath": "C:\\Users\\DS2_ISABELLA\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\DS2_ISABELLA\\Documents\\IDS2\\2026-I2DS\\Aula-04\\03-Encapsulamento\\Encapsulamento\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\SP-Skills\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DS2_ISABELLA\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
