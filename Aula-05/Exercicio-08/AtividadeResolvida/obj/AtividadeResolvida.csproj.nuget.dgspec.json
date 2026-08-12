@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\SP-Skills\\Documents\\2026-I2DS\\Aula-05\\Exercicio-08\\AtividadeResolvida\\AtividadeResolvida.csproj": {}
+    "C:\\Users\\IDS2\\Documents\\IDS2\\2026-I2DS\\Aula-05\\Exercicio-08\\AtividadeResolvida\\AtividadeResolvida.csproj": {}
   },
   "projects": {
-    "c:\\Users\\SP-Skills\\Documents\\2026-I2DS\\Aula-05\\Exercicio-08\\AtividadeResolvida\\AtividadeResolvida.csproj": {
+    "C:\\Users\\IDS2\\Documents\\IDS2\\2026-I2DS\\Aula-05\\Exercicio-08\\AtividadeResolvida\\AtividadeResolvida.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\SP-Skills\\Documents\\2026-I2DS\\Aula-05\\Exercicio-08\\AtividadeResolvida\\AtividadeResolvida.csproj",
+        "projectUniqueName": "C:\\Users\\IDS2\\Documents\\IDS2\\2026-I2DS\\Aula-05\\Exercicio-08\\AtividadeResolvida\\AtividadeResolvida.csproj",
         "projectName": "AtividadeResolvida",
-        "projectPath": "c:\\Users\\SP-Skills\\Documents\\2026-I2DS\\Aula-05\\Exercicio-08\\AtividadeResolvida\\AtividadeResolvida.csproj",
-        "packagesPath": "D:\\AI\\Cache\\NuGet\\Packages",
-        "outputPath": "c:\\Users\\SP-Skills\\Documents\\2026-I2DS\\Aula-05\\Exercicio-08\\AtividadeResolvida\\obj\\",
+        "projectPath": "C:\\Users\\IDS2\\Documents\\IDS2\\2026-I2DS\\Aula-05\\Exercicio-08\\AtividadeResolvida\\AtividadeResolvida.csproj",
+        "packagesPath": "C:\\Users\\IDS2\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\IDS2\\Documents\\IDS2\\2026-I2DS\\Aula-05\\Exercicio-08\\AtividadeResolvida\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\SP-Skills\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\IDS2\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -31,7 +31,6 @@
         },
         "frameworks": {
           "net10.0": {
-            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -46,11 +45,10 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net10.0": {
-          "framework": "net10.0",
           "targetAlias": "net10.0",
           "imports": [
             "net461",
@@ -68,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

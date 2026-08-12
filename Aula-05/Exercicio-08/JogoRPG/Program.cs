@@ -1,388 +1,266 @@
-﻿using System;
-
-public class Personagem
+﻿internal class Program
 {
-    public string Nome { get; private set; }
-    public int Nivel { get; private set; }
-    public int Experiencia { get; private set; }
-
-    public int Forca { get; protected set; }
-    public int Agilidade { get; protected set; }
-    public int Inteligencia { get; protected set; }
-    public int Vida { get; protected set; }
-
-    public Personagem(
-        string nome,
-        int forca,
-        int agilidade,
-        int inteligencia,
-        int vida)
+    public class Personagem
     {
-        Nome = nome;
-        Nivel = 1;
-        Experiencia = 0;
+        public string Nome {get; private set;}
+        public int Nivel {get; protected set;}
+        public int Experiencia {get; private set;}
+        public int Forca {get; protected set;}
+        public int Agilidade {get; protected set;}
+        public int Inteligencia {get; protected set;}
+        public int Vida {get; protected set;} 
 
-        Forca = forca;
-        Agilidade = agilidade;
-        Inteligencia = inteligencia;
-        Vida = vida;
-    }
-
-    public virtual void Apresentar()
-    {
-        Console.WriteLine($"Nome: {Nome}");
-        Console.WriteLine($"Nível: {Nivel}");
-        Console.WriteLine($"Experiência: {Experiencia}");
-        Console.WriteLine($"Força: {Forca}");
-        Console.WriteLine($"Agilidade: {Agilidade}");
-        Console.WriteLine($"Inteligência: {Inteligencia}");
-        Console.WriteLine($"Vida: {Vida}");
-    }
-
-    public virtual void Atacar(Personagem alvo)
-    {
-        int dano = Forca;
-
-        Console.WriteLine($"{Nome} atacou {alvo.Nome}!");
-
-        alvo.Defender(dano);
-
-        GanharExperiencia(20);
-    }
-
-    public virtual void Defender(int dano)
-    {
-        int danoRecebido = dano - Agilidade;
-
-        if (danoRecebido < 1)
+        // Método Construtor
+        public Personagem(string nome, int forca, int agilidade, int inteligencia, int vida)
         {
-            danoRecebido = 1;
+            Nome = nome;
+            Forca = forca;
+            Agilidade = agilidade;
+            Inteligencia = inteligencia;
+            Vida = vida;
+            Experiencia = 0;
+            Nivel = 1; 
         }
 
-        Vida -= danoRecebido;
-
-        if (Vida < 0)
+        public virtual void ApresentarSe()
         {
-            Vida = 0;
+            Console.WriteLine($"Nome: {Nome}");
+            Console.WriteLine($"Nível: {Nivel}");
+            Console.WriteLine($"Experiência: {Experiencia}");
+            Console.WriteLine($"Força: {Forca}");
+            Console.WriteLine($"Agilidade: {Agilidade}");
+            Console.WriteLine($"Inteligência: {Inteligencia}");
+            Console.WriteLine($"Vida: {Vida}");
         }
 
-        Console.WriteLine($"Dano recebido: {danoRecebido}");
-        Console.WriteLine($"Vida de {Nome}: {Vida}");
-    }
-
-    public void GanharExperiencia(int experiencia)
-    {
-        Experiencia += experiencia;
-
-        Console.WriteLine(
-            $"{Nome} ganhou {experiencia} XP!"
-        );
-
-        VerificarEvolucao();
-    }
-
-    private void VerificarEvolucao()
-    {
-        int experienciaNecessaria = Nivel * 100;
-
-        if (Experiencia >= experienciaNecessaria)
+        public virtual void Atacar(Personagem alvo)
         {
-            Evoluir();
-        }
-    }
+            int dano = Forca;
+            Console.WriteLine($"{Nome} atacou {alvo.Nome}");
 
-    protected virtual void Evoluir()
-    {
-        Nivel++;
-
-        Forca += 2;
-        Agilidade += 2;
-        Inteligencia += 2;
-        Vida += 20;
-
-        Console.WriteLine();
-        Console.WriteLine("========================================");
-        Console.WriteLine("              LEVEL UP!");
-        Console.WriteLine("========================================");
-
-        Console.WriteLine(
-            $"{Nome} evoluiu para o nível {Nivel}!"
-        );
-
-        Console.WriteLine($"Força: {Forca}");
-        Console.WriteLine($"Agilidade: {Agilidade}");
-        Console.WriteLine($"Inteligência: {Inteligencia}");
-        Console.WriteLine($"Vida: {Vida}");
-
-        Console.WriteLine("========================================");
-        Console.WriteLine();
-    }
-
-    public bool EstaVivo()
-    {
-        return Vida > 0;
-    }
-}
-
-
-// ======================================================
-// MAGO
-// ======================================================
-
-public class Mago : Personagem
-{
-    public Mago(string nome)
-        : base(
-            nome,
-            5,
-            5,
-            15,
-            80)
-    {
-    }
-
-    public override void Atacar(Personagem alvo)
-    {
-        int dano = Inteligencia;
-
-        Console.WriteLine(
-            $"{Nome} lançou uma magia contra {alvo.Nome}!"
-        );
-
-        alvo.Defender(dano);
-
-        GanharExperiencia(20);
-    }
-
-    protected override void Evoluir()
-    {
-        NivelUp();
-
-        Inteligencia += 5;
-        Agilidade += 2;
-        Vida += 15;
-
-        Console.WriteLine();
-        Console.WriteLine("========================================");
-        Console.WriteLine("              LEVEL UP!");
-        Console.WriteLine("========================================");
-
-        Console.WriteLine(
-            $"{Nome} evoluiu para o nível {Nivel}!"
-        );
-
-        Console.WriteLine($"Inteligência: {Inteligencia}");
-        Console.WriteLine($"Agilidade: {Agilidade}");
-        Console.WriteLine($"Vida: {Vida}");
-
-        Console.WriteLine("========================================");
-        Console.WriteLine();
-    }
-
-    private void NivelUp()
-    {
-        typeof(Personagem)
-            .GetProperty("Nivel")!
-            .SetValue(this, Nivel + 1);
-    }
-}
-
-
-// ======================================================
-// ELFO
-// ======================================================
-
-public class Elfo : Personagem
-{
-    public Elfo(string nome)
-        : base(
-            nome,
-            8,
-            15,
-            10,
-            100)
-    {
-    }
-
-    public override void Atacar(Personagem alvo)
-    {
-        int dano = Forca + Agilidade / 2;
-
-        Console.WriteLine(
-            $"{Nome} disparou um ataque rápido contra {alvo.Nome}!"
-        );
-
-        alvo.Defender(dano);
-
-        GanharExperiencia(20);
-    }
-
-    protected override void Evoluir()
-    {
-        NivelUp();
-
-        Agilidade += 5;
-        Forca += 2;
-        Vida += 20;
-
-        Console.WriteLine();
-        Console.WriteLine("========================================");
-        Console.WriteLine("              LEVEL UP!");
-        Console.WriteLine("========================================");
-
-        Console.WriteLine(
-            $"{Nome} evoluiu para o nível {Nivel}!"
-        );
-
-        Console.WriteLine($"Agilidade: {Agilidade}");
-        Console.WriteLine($"Força: {Forca}");
-        Console.WriteLine($"Vida: {Vida}");
-
-        Console.WriteLine("========================================");
-        Console.WriteLine();
-    }
-
-    private void NivelUp()
-    {
-        typeof(Personagem)
-            .GetProperty("Nivel")!
-            .SetValue(this, Nivel + 1);
-    }
-}
-
-
-// ======================================================
-// CAVALEIRO
-// ======================================================
-
-public class Cavaleiro : Personagem
-{
-    public Cavaleiro(string nome)
-        : base(
-            nome,
-            15,
-            8,
-            5,
-            150)
-    {
-    }
-
-    public override void Atacar(Personagem alvo)
-    {
-        int dano = Forca + 5;
-
-        Console.WriteLine(
-            $"{Nome} golpeou {alvo.Nome}!"
-        );
-
-        alvo.Defender(dano);
-
-        GanharExperiencia(20);
-    }
-
-    public override void Defender(int dano)
-    {
-        int danoRecebido = dano - 5;
-
-        if (danoRecebido < 1)
-        {
-            danoRecebido = 1;
+            alvo.Defender(dano);
+            GanharExperiencia(20);       
         }
 
-        Vida -= danoRecebido;
-
-        if (Vida < 0)
+        public virtual void Defender(int dano)
         {
-            Vida = 0;
+            int danoRecebido = dano - Agilidade;
+            if(danoRecebido < 1)
+            {
+                danoRecebido = 1;
+            } 
+            Vida -= danoRecebido;
+            if(Vida < 0)
+            {
+                Vida = 0;
+            }
+            Console.WriteLine($"Dano Recebido: {danoRecebido}");
+            Console.WriteLine($"Vida de  {Nome}: {Vida}");
         }
 
-        Console.WriteLine(
-            $"{Nome} bloqueou parte do ataque."
-        );
+        public void GanharExperiencia(int experiencia)
+        {
+            Experiencia += experiencia;
+            Console.WriteLine($"{Nome} ganhou {experiencia} XP");
 
-        Console.WriteLine(
-            $"Dano recebido: {danoRecebido}"
-        );
+            VerificarEvolucao();
+        }
 
-        Console.WriteLine(
-            $"Vida de {Nome}: {Vida}"
-        );
+        public void VerificarEvolucao()
+        {
+            int experienciaNecessaria = Nivel * 100;
+            if (Experiencia >= experienciaNecessaria)
+            {
+                Evoluir();
+            }
+        }
+
+        protected virtual void Evoluir()
+        {
+            Nivel++; // Nivel = Nivel + 1
+            Forca += 2; // Forca = Forca + 2
+            Agilidade += 2;
+            Inteligencia +=2;
+            Vida += 10;
+            Console.WriteLine();
+            Console.WriteLine("========================================");
+            Console.WriteLine("              LEVEL UP!");
+            Console.WriteLine("========================================");
+            Console.WriteLine();
+            Console.WriteLine($"{Nome} evoluiu para o nível {Nivel}");
+            Console.WriteLine($"Força: {Forca}");
+            Console.WriteLine($"Agilidade: {Agilidade}");
+            Console.WriteLine($"Inteligência: {Inteligencia}");
+            Console.WriteLine($"Vida: {Vida}");
+            Console.WriteLine("========================================");
+            Console.WriteLine();
+        }
+
+        public bool EstaVivo()
+        {
+            return Vida > 0;
+        }
     }
-
-    protected override void Evoluir()
+    // ======================================================
+    // MAGO
+    // ======================================================
+    public class Mago : Personagem
     {
-        NivelUp();
+        public Mago(string nome): base(nome, 5, 7, 25, 90){ }
 
-        Forca += 5;
-        Vida += 30;
+        public override void Atacar(Personagem alvo)
+        {
+            int dano = Inteligencia;
+            Console.WriteLine(
+                $"{Nome} lançou uma magia contra {alvo.Nome}");
+            alvo.Defender(dano);
+            GanharExperiencia(20);
+        }
 
-        Console.WriteLine();
-        Console.WriteLine("========================================");
-        Console.WriteLine("              LEVEL UP!");
-        Console.WriteLine("========================================");
+        protected override void Evoluir()
+        {
+            Nivel++;
+            Forca++; // Forca = Forca + 2
+            Agilidade += 2;
+            Inteligencia +=5;
+            Vida += 15;
 
-        Console.WriteLine(
-            $"{Nome} evoluiu para o nível {Nivel}!"
-        );
-
-        Console.WriteLine($"Força: {Forca}");
-        Console.WriteLine($"Vida: {Vida}");
-
-        Console.WriteLine("========================================");
-        Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("========================================");
+            Console.WriteLine("              LEVEL UP!");
+            Console.WriteLine("========================================");
+            Console.WriteLine();
+            Console.WriteLine($"{Nome} evoluiu para o nível {Nivel}");
+            Console.WriteLine($"Força: {Forca}");
+            Console.WriteLine($"Agilidade: {Agilidade}");
+            Console.WriteLine($"Inteligência: {Inteligencia}");
+            Console.WriteLine($"Vida: {Vida}");
+            Console.WriteLine("========================================");
+            Console.WriteLine();
+        }
     }
-
-    private void NivelUp()
+    // ======================================================
+    // ELFO
+    // ======================================================
+    public class Elfo : Personagem
     {
-        typeof(Personagem)
-            .GetProperty("Nivel")!
-            .SetValue(this, Nivel + 1);
+        public Elfo(string nome): base(nome, 8, 15, 10, 95){ }
+
+        public override void Atacar(Personagem alvo)
+        {
+            int dano = (Forca + Agilidade) /2;
+            Console.WriteLine(
+                $"{Nome} lançou uma magia contra {alvo.Nome}");
+            alvo.Defender(dano);
+            GanharExperiencia(20);
+        }
+
+        protected override void Evoluir()
+        {
+            Nivel++;
+            Forca += 3; 
+            Agilidade += 2;
+            Inteligencia++;
+            Vida += 15;
+
+            Console.WriteLine();
+            Console.WriteLine("========================================");
+            Console.WriteLine("              LEVEL UP!");
+            Console.WriteLine("========================================");
+            Console.WriteLine();
+            Console.WriteLine($"{Nome} evoluiu para o nível {Nivel}");
+            Console.WriteLine($"Força: {Forca}");
+            Console.WriteLine($"Agilidade: {Agilidade}");
+            Console.WriteLine($"Inteligência: {Inteligencia}");
+            Console.WriteLine($"Vida: {Vida}");
+            Console.WriteLine("========================================");
+            Console.WriteLine();
+        }
     }
-}
+    // ======================================================
+    // CAVALEIRO
+    // ======================================================
+    public class Cavaleiro : Personagem
+    {
+        public Cavaleiro(string nome): base(nome, 15, 8, 5, 110){ }
 
+        public override void Atacar(Personagem alvo)
+        {
+            int dano = Forca + 5;
+            Console.WriteLine(
+                $"{Nome} lançou uma magia contra {alvo.Nome}");
+            alvo.Defender(dano);
+            GanharExperiencia(20);
+        }
 
-// ======================================================
-// PROGRAMA PRINCIPAL
-// ======================================================
+        protected override void Evoluir()
+        {
+            Nivel++;
+            Forca += 5; 
+            Agilidade ++;
+            Inteligencia++;
+            Vida += 15;
 
-class Program
-{
-    static void Main()
+            Console.WriteLine();
+            Console.WriteLine("========================================");
+            Console.WriteLine("              LEVEL UP!");
+            Console.WriteLine("========================================");
+            Console.WriteLine();
+            Console.WriteLine($"{Nome} evoluiu para o nível {Nivel}");
+            Console.WriteLine($"Força: {Forca}");
+            Console.WriteLine($"Agilidade: {Agilidade}");
+            Console.WriteLine($"Inteligência: {Inteligencia}");
+            Console.WriteLine($"Vida: {Vida}");
+            Console.WriteLine("========================================");
+            Console.WriteLine();
+        }
+
+        public override void Defender(int dano)
+        {
+            int danoRecebido = dano -5;
+            if(danoRecebido < 1)
+            {
+                danoRecebido = 1;
+            }
+            Vida -= danoRecebido;
+            if (Vida < 0)
+            {
+                Vida = 0;
+            }
+            Console.WriteLine($"{Nome} bloqueou parte do ataque");
+            Console.WriteLine($"Dano recebido: {danoRecebido}");
+            Console.WriteLine($"Vida de {Nome}: {Vida}");
+        }
+    }
+    private static void Main(string[] args)
     {
         Console.WriteLine("========================================");
         Console.WriteLine("       JOGO DE BATALHA - POO");
         Console.WriteLine("========================================");
 
         Console.WriteLine();
-
         Personagem personagem1 = CriarPersonagem(1);
 
         Console.WriteLine();
-
         Personagem personagem2 = CriarPersonagem(2);
 
         Console.Clear();
-
         Console.WriteLine("========================================");
         Console.WriteLine("          PERSONAGENS ESCOLHIDOS");
         Console.WriteLine("========================================");
 
         Console.WriteLine();
-
-        personagem1.Apresentar();
-
-        Console.WriteLine();
-
-        personagem2.Apresentar();
+        personagem1.ApresentarSe();
 
         Console.WriteLine();
+        personagem2.ApresentarSe();
 
+        Console.WriteLine();
         Console.WriteLine("Pressione ENTER para iniciar a batalha...");
         Console.ReadLine();
 
         IniciarBatalha(personagem1, personagem2);
     }
-
 
     static Personagem CriarPersonagem(int numero)
     {
@@ -396,9 +274,7 @@ class Program
 
         int opcao;
 
-        while (!int.TryParse(Console.ReadLine(), out opcao)
-               || opcao < 1
-               || opcao > 3)
+        while (!int.TryParse(Console.ReadLine(), out opcao) || opcao < 1 || opcao > 3)
         {
             Console.WriteLine(
                 "Opção inválida. Digite 1, 2 ou 3:"
@@ -433,66 +309,48 @@ class Program
     }
 
 
-    static void IniciarBatalha(
-        Personagem personagem1,
-        Personagem personagem2)
+    static void IniciarBatalha(Personagem personagem1,Personagem personagem2)
     {
         Console.Clear();
-
         Console.WriteLine("========================================");
         Console.WriteLine("          INÍCIO DA BATALHA");
         Console.WriteLine("========================================");
-
         Console.WriteLine();
         Console.WriteLine(
             $"{personagem1.Nome} VS {personagem2.Nome}"
         );
-
         Console.WriteLine();
 
         int rodada = 1;
-
-        while (
-            personagem1.EstaVivo() &&
-            personagem2.EstaVivo())
+        while (personagem1.EstaVivo() && personagem2.EstaVivo())
         {
             Console.WriteLine("----------------------------------------");
             Console.WriteLine($"RODADA {rodada}");
             Console.WriteLine("----------------------------------------");
-
             Console.WriteLine();
 
             // Personagem 1 ataca
             personagem1.Atacar(personagem2);
-
             if (!personagem2.EstaVivo())
             {
                 break;
             }
-
             Console.WriteLine();
-
             Console.WriteLine("Pressione ENTER para continuar...");
             Console.ReadLine();
-
             Console.WriteLine();
 
             // Personagem 2 ataca
             personagem2.Atacar(personagem1);
-
             if (!personagem1.EstaVivo())
             {
                 break;
             }
-
             Console.WriteLine();
-
             Console.WriteLine("Pressione ENTER para continuar...");
             Console.ReadLine();
-
             rodada++;
         }
-
         ExibirResultado(personagem1, personagem2);
     }
 
@@ -502,13 +360,10 @@ class Program
         Personagem personagem2)
     {
         Console.Clear();
-
         Console.WriteLine("========================================");
         Console.WriteLine("             FIM DA BATALHA");
         Console.WriteLine("========================================");
-
         Console.WriteLine();
-
         Personagem vencedor;
 
         if (personagem1.EstaVivo())
@@ -519,19 +374,13 @@ class Program
         {
             vencedor = personagem2;
         }
-
         Console.WriteLine(
             $"VENCEDOR: {vencedor.Nome}"
         );
-
         Console.WriteLine();
-
         Console.WriteLine("========== STATUS DO VENCEDOR ==========");
-
-        vencedor.Apresentar();
-
+        vencedor.ApresentarSe();
         Console.WriteLine();
-
         Console.WriteLine("========================================");
         Console.WriteLine("              FIM DO JOGO");
         Console.WriteLine("========================================");

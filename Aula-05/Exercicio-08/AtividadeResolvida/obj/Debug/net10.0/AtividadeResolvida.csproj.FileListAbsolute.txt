@@ -1,0 +1,15 @@
+C:\Users\IDS2\Documents\IDS2\2026-I2DS\Aula-05\Exercicio-08\AtividadeResolvida\bin\Debug\net10.0\AtividadeResolvida.exe
+C:\Users\IDS2\Documents\IDS2\2026-I2DS\Aula-05\Exercicio-08\AtividadeResolvida\bin\Debug\net10.0\AtividadeResolvida.deps.json
+C:\Users\IDS2\Documents\IDS2\2026-I2DS\Aula-05\Exercicio-08\AtividadeResolvida\bin\Debug\net10.0\AtividadeResolvida.runtimeconfig.json
+C:\Users\IDS2\Documents\IDS2\2026-I2DS\Aula-05\Exercicio-08\AtividadeResolvida\bin\Debug\net10.0\AtividadeResolvida.dll
+C:\Users\IDS2\Documents\IDS2\2026-I2DS\Aula-05\Exercicio-08\AtividadeResolvida\bin\Debug\net10.0\AtividadeResolvida.pdb
+C:\Users\IDS2\Documents\IDS2\2026-I2DS\Aula-05\Exercicio-08\AtividadeResolvida\obj\Debug\net10.0\AtividadeResolvida.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\IDS2\Documents\IDS2\2026-I2DS\Aula-05\Exercicio-08\AtividadeResolvida\obj\Debug\net10.0\AtividadeResolvida.AssemblyInfoInputs.cache
+C:\Users\IDS2\Documents\IDS2\2026-I2DS\Aula-05\Exercicio-08\AtividadeResolvida\obj\Debug\net10.0\AtividadeResolvida.AssemblyInfo.cs
+C:\Users\IDS2\Documents\IDS2\2026-I2DS\Aula-05\Exercicio-08\AtividadeResolvida\obj\Debug\net10.0\AtividadeResolvida.csproj.CoreCompileInputs.cache
+C:\Users\IDS2\Documents\IDS2\2026-I2DS\Aula-05\Exercicio-08\AtividadeResolvida\obj\Debug\net10.0\AtividadeResolvida.sourcelink.json
+C:\Users\IDS2\Documents\IDS2\2026-I2DS\Aula-05\Exercicio-08\AtividadeResolvida\obj\Debug\net10.0\AtividadeResolvida.dll
+C:\Users\IDS2\Documents\IDS2\2026-I2DS\Aula-05\Exercicio-08\AtividadeResolvida\obj\Debug\net10.0\refint\AtividadeResolvida.dll
+C:\Users\IDS2\Documents\IDS2\2026-I2DS\Aula-05\Exercicio-08\AtividadeResolvida\obj\Debug\net10.0\AtividadeResolvida.pdb
+C:\Users\IDS2\Documents\IDS2\2026-I2DS\Aula-05\Exercicio-08\AtividadeResolvida\obj\Debug\net10.0\AtividadeResolvida.genruntimeconfig.cache
+C:\Users\IDS2\Documents\IDS2\2026-I2DS\Aula-05\Exercicio-08\AtividadeResolvida\obj\Debug\net10.0\ref\AtividadeResolvida.dll
